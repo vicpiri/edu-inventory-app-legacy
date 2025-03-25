@@ -1,0 +1,38 @@
+/* Add here all your CSS customizations */
+
+//Imagen de usuario en paneles
+.widget-profile-info .profile-picture img {
+    -webkit-border-radius: 10px !important;
+    border-radius: 10px !important;
+}
+
+//Imagen de usuario en pantalla de bloqueo
+.body-locked .current-user .user-image {
+    border: 5px solid #cccccc;
+    border-radius: 15px;
+    /* height: 150px; */
+    left: 50%;
+    position: absolute;
+    margin-left: -55px !important;
+    top: -75px;
+    width: 110px !important;
+}
+
+//Imagen de la ficha del artículo
+.img-articulo{
+    max-height: 50px;
+}
+
+#lb-overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    //background:black url(loader.gif) no-repeat scroll center center;
+    background:black;
+}
+#lb-lightbox {
+    position:fixed;
+    display: block;
+}
