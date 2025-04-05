@@ -46,47 +46,79 @@
     </nav>
       <div class="container theme-showcase col-md-6 col-md-offset-3" role="main">
           <?php
-          if (file_exists('../desarrollo.php')){
-                ini_set('display_errors', 1);
-            }else{
-                ini_set('display_errors', 0);
-            }
-          if ((!isset($_GET['stage'])) && (!isset($_POST['stage']))){
-          ?>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">¡Bienvenido!</div>
-                    <div class="panel-body">
-                        Bienvenido al asistente de instalación del Gestor de Inventario y Usuarios. </br></br>
+          // Mostrar errores solo si estamos en entorno de desarrollo
+          if (file_exists('../desarrollo.php')) {
+              ini_set('display_errors', 1);
+          } else {
+              ini_set('display_errors', 0);
+          }
 
-                        Por favor, siga las instrucciones para completar la instalación.
-                    </div>
-                    <div class="panel-footer text-right">
-                        <a class="btn btn-success" href="index.php?stage=servercheck">Continuar ></a>
-                    </div>
-                </div>
-          <?php
-          }elseif (($_GET['stage'] == 'servercheck') or ($_POST['stage'] == 'servercheck')) {
-              require 'servercheck.php';     
-          }elseif (($_GET['stage'] == 'dbdata') or ($_POST['stage'] == 'dbdata')){
-              require 'dbdata.php';
-          }elseif (($_GET['stage'] == 'dbcheck') or ($_POST['stage'] == 'dbcheck')){
-              require 'dbcheck.php';
-          }elseif (($_GET['stage'] == 'dbinstall') or ($_POST['stage'] == 'dbinstall')){
-              require 'dbinstall.php';     
-          }elseif (($_GET['stage'] == 'dbimportquestion') or ($_POST['stage'] == 'dbimportquestion')){
-              require 'dbimportquestion.php';     
-          }elseif (($_GET['stage'] == 'dbimport') or ($_POST['stage'] == 'dbimport')){
-              require 'dbimport.php';     
-          }elseif (($_GET['stage'] == 'superuserdata') or ($_POST['stage'] == 'superuserdata')){
-              require 'superuserdata.php';
-          }elseif (($_GET['stage'] == 'centrodata') or ($_POST['stage'] == 'centrodata')){
-              require 'centrodata.php';
-          }elseif (($_GET['stage'] == 'despedida') or ($_POST['stage'] == 'despedida')){
-              require 'despedida.php';
-          }elseif (($_GET['stage'] == 'dbimportselect') or ($_POST['stage'] == 'dbimportselect')){
-              require 'dbimportselect.php';
+          // Obtener el valor de stage desde GET o POST (prioridad a GET)
+          $stage = $_GET['stage'] ?? $_POST['stage'] ?? null;
+
+          switch ($stage) {
+              case null:
+                  // Bienvenida
+                  ?>
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">¡Bienvenido!</div>
+                      <div class="panel-body">
+                          Bienvenido al asistente de instalación del Gestor de Inventario y Usuarios. </br></br>
+                          Por favor, siga las instrucciones para completar la instalación.
+                      </div>
+                      <div class="panel-footer text-right">
+                          <a class="btn btn-success" href="index.php?stage=servercheck">Continuar ></a>
+                      </div>
+                  </div>
+                  <?php
+                  break;
+
+              case 'servercheck':
+                  require 'servercheck.php';
+                  break;
+
+              case 'dbdata':
+                  require 'dbdata.php';
+                  break;
+
+              case 'dbcheck':
+                  require 'dbcheck.php';
+                  break;
+
+              case 'dbinstall':
+                  require 'dbinstall.php';
+                  break;
+
+              case 'dbimportquestion':
+                  require 'dbimportquestion.php';
+                  break;
+
+              case 'dbimport':
+                  require 'dbimport.php';
+                  break;
+
+              case 'superuserdata':
+                  require 'superuserdata.php';
+                  break;
+
+              case 'centrodata':
+                  require 'centrodata.php';
+                  break;
+
+              case 'despedida':
+                  require 'despedida.php';
+                  break;
+
+              case 'dbimportselect':
+                  require 'dbimportselect.php';
+                  break;
+
+              default:
+                  echo "<div class='alert alert-danger'>Etapa desconocida: $stage</div>";
+                  break;
           }
           ?>
+
           
           
               
