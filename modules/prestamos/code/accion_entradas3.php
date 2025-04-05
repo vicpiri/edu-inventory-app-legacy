@@ -29,7 +29,9 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
         $rowsSalidas = consultaDB($sql, $db);
         
         if ($rowsSalidas){
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $fecha=date("Y-m-d H:i:s",time());
             $sql="UPDATE salidas SET usuario_devuelve='" . $_SESSION['user'] . "', devuelto='t', fecha_devolucion='".$fecha."' WHERE id_salida='".$rowsSalidas["id_salida"]."'";
             consultaDB($sql, $db);

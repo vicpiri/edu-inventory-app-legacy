@@ -1,5 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
     $sql = 'SELECT * FROM users WHERE username="' . $_SESSION['user'] . '"';
     $rowUsuario = consultaDB($sql, $db);
 ?>

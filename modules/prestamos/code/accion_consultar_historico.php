@@ -2,7 +2,9 @@
 require_once '../../../code/config.php';
 require_once $baseURL . 'code/conecta_data_base.php';
 require_once $baseURL . 'code/main_functions.php';
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $consulta = $_POST['cadena'];
 

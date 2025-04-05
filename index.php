@@ -11,7 +11,9 @@ ini_set('display_errors', 0);
         require('code/main_functions.php');
         require('code/config.php');
         require('code/conecta_data_base.php');
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         if (isset($_SESSION["user"])){  //Comprobamos que corresponden a una sesion valida
             $user = $_SESSION["user"];
             $sql = "SELECT * FROM users WHERE username='$user'";

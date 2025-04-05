@@ -3,7 +3,9 @@
 require_once 'config.php';
 require_once $baseURL . 'code/conecta_data_base.php';
 require_once $baseURL . 'code/main_functions.php';
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $tipo = $_POST['tipo'];
 

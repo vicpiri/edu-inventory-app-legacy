@@ -18,7 +18,9 @@
  * 
  * .notifications = área de notificaciones de usuario en la parte superior
  */
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $nivel = $_SESSION['userlevel'];
 
 

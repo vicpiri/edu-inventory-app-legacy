@@ -4,7 +4,9 @@ require '../../../code/config.php';
 require $baseURL . 'code/conecta_data_base.php';
 require $baseURL . 'code/main_functions.php';
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $grupo = $_POST['grupo'];
 

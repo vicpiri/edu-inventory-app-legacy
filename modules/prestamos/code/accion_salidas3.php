@@ -32,7 +32,9 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
             $fecha=date("Y-m-d H:i:s",time());
             //Si está prestado comprobamos si es fungible
             if ($rowsArticulo['fungible']){
-                session_start();
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 $user = $_SESSION["user"];
                 $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user')";
                 consultaDB($sql, $db);
@@ -42,7 +44,9 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
                 . "<br/>Se ha ignorado la anotación', 'fa fa-exclamation') </script>";
             }else{
                 //Si está prestado, anotamos la devolución y generamos una nueva salida. Después notificamos la situación.
-                session_start();
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 //$fecha=date("Y-m-d",time());
                 $sql="UPDATE salidas SET usuario_devuelve='" . $_SESSION['user'] . "', devuelto='t', fecha_devolucion='".$fecha."' WHERE id_salida='".$rowsSalidas["id_salida"]."'";
                 consultaDB($sql, $db);
@@ -55,7 +59,9 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
             }
         }else{
             $fecha=date("Y-m-d H:i:s",time());
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             $user = $_SESSION["user"];
             $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user')";
             consultaDB($sql, $db);

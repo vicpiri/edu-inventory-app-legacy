@@ -1,7 +1,9 @@
 <?php
 function iniciasesion ($user, $userlevel, &$db){
-    
-    session_start();
+
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     $_SESSION["user"]= $user;
     $_SESSION["userlevel"]= $userlevel;
     

@@ -57,7 +57,9 @@ if ($rowsAccion){
 }
 
 //Comprobamos si la acción está permitida para el usuario actual
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $accionPermitida = false;
 if ($accionExiste){
     if ($_SESSION["userlevel"] <= $rowsAccion['nivel']){
