@@ -87,13 +87,9 @@ if (($title == '') or ($centro == '') or ($codigocentro == '') or ($uploadOk == 
     }else{
         $client = $_POST['client'];
     }
-//    $txt = '$nombreSeccion = "";';
-//    $myfile = file_put_contents('../code/config.php', $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
-     if (file_exists('../install')){
-         if (is_dir('../install')){
-             rename('../install', '../install_');
-         }
-     }
+
+    file_put_contents('../installed', 'INSTALLED');
+
      require '../code/config.php';
         try{
             $db = new PDO("mysql:host=$host; dbname=$dbname", $user, $pass);
