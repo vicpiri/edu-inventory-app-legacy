@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  xampp:
+    image: tomsik68/xampp:7
+    container_name: xampp-legacy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/opt/lampp/htdocs
+    stdin_open: true
+    tty: true
