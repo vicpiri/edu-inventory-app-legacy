@@ -111,7 +111,7 @@ function format_codigobarras($codigo){
  * esta función genera un panel con el contenido indicado en los parámetros
  * utiliza los estilos y propiedades el theme porto admin
  */
-function genera_panel_especial ($header, $contenido, $footer, $tipo, $icono){
+function genera_panel_especial ($header, $contenido, $footer = '', $tipo = '', $icono = ''){
     if ($tipo == 'primario'){
         $panel ='<section class="panel-primary">';
     }else{
@@ -144,7 +144,7 @@ function genera_panel_especial ($header, $contenido, $footer, $tipo, $icono){
  * esta función genera un panel con el contenido indicado en los parámetros
  * utiliza los estilos y propiedades el theme porto admin
  */
-function genera_panel ($titulo, $subtitulo, $acciones, $contenido, $footer, $tipo, $icono){
+function genera_panel ($titulo, $subtitulo, $acciones, $contenido, $footer = '', $tipo = '', $icono = ''){
     if ($tipo == 'primario'){
         $panel ='<section class="panel-primary">';
     }else if($tipo == 'succes'){
@@ -156,8 +156,11 @@ function genera_panel ($titulo, $subtitulo, $acciones, $contenido, $footer, $tip
     }
     $panel .= '<header class="panel-heading">';
     $panel .= '<div class="panel-actions">';
-    foreach ((array)$acciones as $accion) {
-        $panel .= '<a href="#" class="' . $accion['clases'] . '"' .  $accion['otros'] .'></a>';
+    //Comprobamos si $acciones no es una cadena vacía
+    if ($acciones != ''){
+        foreach ((array)$acciones as $accion) {
+            $panel .= '<a href="#" class="' . $accion['clases'] . '"' .  $accion['otros'] .'></a>';
+        }
     }
     $panel .= '</div>';
     $panel .= '<h2 class="panel-title">' . $titulo . '</h2>';
