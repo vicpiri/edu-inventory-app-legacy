@@ -14,8 +14,10 @@ function iniciasesion ($user, $userlevel, &$db){
 
     //Borramos los archivos temporales
     borrararchivosusuario($user);
-    
-    echo "<script> window.location.reload(); </script>";
+
+    header("Location: index.php");
+    exit();
+
 }
 
 if (isset($_POST["loged"])){ //Si hay datos de identificaci�n los buscamos en la base de datos
