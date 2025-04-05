@@ -4,55 +4,50 @@ Este es el repositorio del sistema de gestión de inventario y usuarios para cen
 
 ### Para qué es este repositorio? ###
 
-* Este repositorio se ha creado para el usuo privado del autor. Si no eres el autor no estás autorizaco a utilizar ninguno de los archivos contenidos aquí.
+* Este repositorio se ha creado para el uso docente privado del autor.
+* Se trata de una versión Legacy del proyecto que ya no va a tener nuevas actualizaciones
 * Version: 0.23 (Producción)
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### Configuración Vagrant###
+### Configuración para ejecutar la aplicación ###
 
-* Instalar Virtual Box
-* Instalar Vagrant
-* Instalar Putty
-* Instalar Git para windows
-* Utilizar los archivos Vagrantfile y bootstrap.sh incluídos en el repositorio
+* Clonar el repositorio
+* Instalar Docker (para entornos de desarrollo se recomienda Docker Desktop)
+* Ejecutar desde la carpeta del repositorio:
 ~~~~
-vagrant init ubuntu/xenial64
-
-editamos VagrantFile y añadimos las opciones de 
-
-  config.vm.box = "ubuntu/xenial64"
-  config.vm.network :forwarded_port, guest: 80, host: 8080
-
-vagant up
-
-probar a ejecutar vagrant ssh, si no funciona realizar las acciones relacionadas con Putty
-
-vagrant plugin install vagrant-multi-putty
-
-vagrant putty (dará un error, pero generará el archivo clave OpenSSH
-
-ejecutar putty y configurar la conexión con la clave generada
-
-el usuario por defecto es: ubuntu
-
-sudo apt-get update
-sudo apt-get install -y apache2
-
-sudo rm -rf /var/www/html
-sudo ln -fs /vagrant /var/www/html
-
-sudo apt-get update
-sudo apt-get install mysql-server
-sudo mysql_secure_installation //prescindible
-
-sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql
-
-sudo apt-get update
-sudo apt-get install phpmyadmin php-mbstring php-gettext
-sudo apt-get install php-zip
-
+docker-compose up -d
 ~~~~
 
+### Instalación en el servidor ###
+La primera vez arrancará el script de instalación. Siga los pasos que indica el asistente:
+1. Bienvenida
+2. Comprobación de los requisitos del servidor
+3. Información de la base de datos
+   * Para utilizar la base de datos del contenedor utiliza los siguientes datos:
+     1. URL: localhost
+     2. Database: (indiferente)
+     3. User: root
+     4. Password: (dejar este campo en blanco)
+4. Creación de la base de datos
+5. Creación de las tablas
+6. Importación de datos de una versión anterior (Seleccionar NO)
+7. Datos del Superusuario
+8. Personalización de la aplicación:
+   1. URL: http://localhost:8080
+   2. Título de la aplicación: (indiferente)
+   3. Nombre del Centro: (indiferente)
+   4. Código del centro: (indiferente)
+   5. Logo del centro: (sube una imagen del logo del centro, preferentemente apaisada)
+   6. Finalización
+
+### Instalación de módulos ###
+Aunque este repositorio ya incluye módulos, es necesario activarlos para que funcionen.
+
+Para ello ve al apartado "Administración/Configuración/Gestión de módulos". Allí activa el módulo de Préstamos y recarga la página.
+
+### Visualización de errores ###
+Durante el proceso de desarrollo, se puede crear un archivo vacío nombrado como 'desarrollo.php' en la raiz del sitio.
+Mientras exista este archivo, todos los errores del servidor se mostrarán en la interaz de usuario.
 
 ### Instrucciones de publicación ###
 
@@ -61,7 +56,3 @@ El paquete debe ir en un archivo ZIP cuyo nombre debe ser el número de versión
 La estructura de archivos debe ser completa, es decir:
 /modules/nombredelmodulo  
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
