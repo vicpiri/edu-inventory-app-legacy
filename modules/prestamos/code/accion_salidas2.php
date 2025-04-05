@@ -18,7 +18,7 @@ if (isset($db)){
         include 'accion_salidas.php';
     }else{
         include 'accion_salidas3.php';
-    }    
+    }
 }else{
     echo "<script> notification('error', 'Error de DB', 'No se encuentra la DB', 'fa fa-exclamation') </script>";
 }

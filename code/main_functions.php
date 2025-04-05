@@ -183,7 +183,7 @@ function genera_panel ($titulo, $subtitulo, $acciones, $contenido, $footer = '',
  * utilizando el código HTML del Theme
  */
 
-function genera_tabla ($header, $datos, $tipo){
+function genera_tabla ($header, $datos, $tipo = ''){
     $tabla = '';
     
     // Generamos la cabecera de la tabla

@@ -52,7 +52,7 @@ else //si no estamos recibiendo los archivos, recibimos el resto del formulario
         
             //movemos la imagen a la carpeta imágenes
 
-            if ($_POST['filenames']){
+            if (isset($_POST['filenames'])){
             $foto = $_POST['username'] . ".jpg";
 
                 while(file_exists($baseURL . 'userimages/' . $foto)){
@@ -76,7 +76,7 @@ else //si no estamos recibiendo los archivos, recibimos el resto del formulario
             $telefono = $_POST['telefono'];
             $telefono2 = $_POST['telefono2'];
             $password = $_POST['password'];
-            $passwordconfirm = $_POST['paswordconfirm'];
+            //$passwordconfirm = $_POST['paswordconfirm'];
             $fechanacimiento = $_POST['fechanacimiento'];
 
             $sql = "INSERT INTO users ("

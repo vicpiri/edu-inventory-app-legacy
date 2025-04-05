@@ -15,11 +15,11 @@ $contenido .= '</div><script>$(".autofocus").trigger("focus")</script>';
 
 $articulo = (filter_input(INPUT_POST, 'inputArticulo'));
 
-
 if ($articulo){ //Si se ha enviado información de un artículo, realizamos las comprobaciones
     //Comprobamos si el artículo introducido existe en la tabla artículos
     $sql = 'SELECT * FROM articulos WHERE id_articulo = ' . $articulo;
     $rowsArticulo = consultaDB($sql, $db);
+
     if (!$rowsArticulo){
         echo "<script> notification('error', 'Error de artículo', 'El artículo " .
                 format_codigobarras($articulo) . " no existe', 'fa fa-exclamation') </script>";
@@ -36,7 +36,7 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
                     session_start();
                 }
                 $user = $_SESSION["user"];
-                $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user')";
+                $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta, usuario_devuelve) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user', '')";
                 consultaDB($sql, $db);
             }else if ($usuario_prestamo === $rowsSalidas['usuario']){
                 //Si no es fungible comprobamos si está en la lista del usuario actual
@@ -51,7 +51,7 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
                 $sql="UPDATE salidas SET usuario_devuelve='" . $_SESSION['user'] . "', devuelto='t', fecha_devolucion='".$fecha."' WHERE id_salida='".$rowsSalidas["id_salida"]."'";
                 consultaDB($sql, $db);
                 $user = $_SESSION["user"];
-                $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user')";
+                $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta, usuario_devuelve) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user', '')";
                 consultaDB($sql, $db);
                 
                 echo "<script> notification('warning', 'Este artículo estaba prestado', 'El artículo " . 
@@ -62,9 +62,12 @@ if ($articulo){ //Si se ha enviado información de un artículo, realizamos las 
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
+
             $user = $_SESSION["user"];
-            $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user')";
+
+            $sql="INSERT INTO salidas (usuario, articulo, fecha, fecha_devolucion, usuario_presta, usuario_devuelve) VALUES('$usuario_prestamo', '$articulo', '$fecha', '$fecha', '$user', '')";
             consultaDB($sql, $db);
+
         }
     }
 }

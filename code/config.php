@@ -9,10 +9,10 @@ $dbname = "inventario";
 $nombreAplicacion = "Gestor de material y usuarios"; 
 $nombreSeccion = ""; 
 //Personalización de la aplicación
-$title = "Gestor Inventario";
+$title = "Gestor de Inventario";
 $logotipo = "assets/images/Reduccion_Colores_01.png";
 //URL principal
 $baseURL = __DIR__ . "/../";
 $baseURLClient = "http://localhost:8080/";
 // Identificación de la instalación
-$client = "CL67f0ea6cb92c1";
+$client = "CL67f1a3ac4c2b4";

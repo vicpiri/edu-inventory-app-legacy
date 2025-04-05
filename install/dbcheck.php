@@ -65,7 +65,7 @@ if ($dbh)
         echo "La base de datos indicada no extiste.<br />";
     }
     
-    if (!$db){
+    if (!isset($db)){
         try {
             $dbh = new PDO("mysql:host=$host", $user, $pass);
 
