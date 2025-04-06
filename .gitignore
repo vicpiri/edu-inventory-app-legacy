@@ -1,3 +1,4 @@
 .idea
 installed
-/code/config.php
+/code/config*.php
+/temp
