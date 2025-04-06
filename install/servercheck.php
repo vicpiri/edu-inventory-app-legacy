@@ -71,6 +71,36 @@
                     <td class="text-center"><span class="label label-success">Correcto</span></td>
                   </tr>
                   <tr>
+                    <td>Extensión PHP - mbstring</td>
+                    <td><?php echo extension_loaded('mbstring');?></td>
+                    <td>Se necesita que el servidor tenga esta extensión PHP habilitada.</td>
+                    <?php if (extension_loaded('mbstring')){ ?>
+                    <td class="text-center"><span class="label label-success">Correcto</span></td>
+                    <?php }else{ ?>
+                    <td class="text-center"><span class="label label-danger">Incorrecto</span></td>
+                    <?php $errores ++;} ?>
+                  </tr>
+                  <tr>
+                    <td>Extensión PHP - zip</td>
+                    <td><?php echo extension_loaded('zip');?></td>
+                    <td>Se necesita que el servidor tenga esta extensión PHP habilitada.</td>
+                    <?php if (extension_loaded('zip')){ ?>
+                    <td class="text-center"><span class="label label-success">Correcto</span></td>
+                    <?php }else{ ?>
+                    <td class="text-center"><span class="label label-danger">Incorrecto</span></td>
+                    <?php $errores ++;} ?>
+                  </tr>
+				  <tr>
+                    <td>Extensión PHP - xml</td>
+                    <td><?php echo extension_loaded('xml');?></td>
+                    <td>Se necesita que el servidor tenga esta extensión PHP habilitada.</td>
+                    <?php if (extension_loaded('xml')){ ?>
+                    <td class="text-center"><span class="label label-success">Correcto</span></td>
+                    <?php }else{ ?>
+                    <td class="text-center"><span class="label label-danger">Incorrecto</span></td>
+                    <?php $errores ++;} ?>
+                  </tr>
+                  <tr>
                     <td>Accesibilidad al directorio de instalación</td>
                     <td><?php echo is_writable('.')?></td>
                     <td>El directorio de instalación debe ser escribible.</td>

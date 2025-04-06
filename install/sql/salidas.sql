@@ -31,9 +31,9 @@ CREATE TABLE `salidas` (
   `usuario` varchar(15) NOT NULL DEFAULT '0',
   `articulo` int(11) NOT NULL DEFAULT '0',
   `fecha` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `usuario_presta` varchar(255) NOT NULL,
-  `fecha_devolucion` datetime NOT NULL,
-  `usuario_devuelve` varchar(255) NOT NULL,
+  `usuario_presta` varchar(255) NOT NULL DEFAULT '',
+  `fecha_devolucion` datetime NOT NULL DEFAULT '0',
+  `usuario_devuelve` varchar(255) NOT NULL DEFAULT '0',
   `devuelto` binary(1) NOT NULL DEFAULT 'f'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -1,3 +1,3 @@
 <?php
 
-$version_aplicacion = 0.23;
+$version_aplicacion = 0.24;

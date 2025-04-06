@@ -14,7 +14,7 @@ echo "</script>";
     $colApellido1 = 'Apellido1';
     $colApellido2 = 'Apellido2';
     $colFecha_Nacimiento = 'Fecha Nacimiento';
-    $colGrupo = 'GrupoAlumno';
+    $colGrupo = 'Grupo';
 
     
     if (isset($datosArchivo)){
@@ -37,8 +37,7 @@ echo "</script>";
         
         //Si existen todas las columnas, procedemos con el análisis
         if (($colNIA > -1) && ($colNombre > -1) && ($colApellido1 > -1)
-            && ($colApellido2 > -1) && ($colFecha_Nacimiento > -1) && ($colDocumento > -1) 
-            && ($colEstado > -1) && ($colEnsenanza > -1) && ($colGrupo > -1)){
+            && ($colApellido2 > -1) && ($colFecha_Nacimiento > -1) && ($colGrupo > -1)){
 
                 //eliminamos las cabeceras de la variable de datos
                 $datosArchivo = elimina_cabeceras($datosArchivo);

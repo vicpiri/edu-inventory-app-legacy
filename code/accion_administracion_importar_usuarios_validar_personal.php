@@ -9,7 +9,7 @@ echo "</script>";
     //
     //
     //Configuración de los encabezamientos de las columnas
-    $colTipo = 'Tipo';
+    $colTipo = 'Función';
     $colDocumento = 'Documento';
     $colNombre = 'Nombre';
     $colApellido1 = 'Apellido1';
@@ -17,49 +17,28 @@ echo "</script>";
     $colFecha_Nacimiento = 'Fecha Nacimiento';
     $colTelefono1 = 'Teléfono 1';
     $colTelefono2 = 'Teléfono 2';
+    $colEmail = 'Email';
     
     if (isset($datosArchivo)){
         //Busqueda de las columnas
         $colTipo = busca_columna($datosArchivo,1 ,$colTipo);
-        if ($colTipo < 0) {
-            $colTipo = 'Tipus';
-            $colTipo = busca_columna($datosArchivo,1 ,$colTipo);
-        }
+        
         $colDocumento = busca_columna($datosArchivo,1 ,$colDocumento);
-        if ($colDocumento < 0) {
-            $colDocumento = 'Document';
-            $colDocumento = busca_columna($datosArchivo,1 ,$colDocumento);
-        }
+        
         $colNombre = busca_columna($datosArchivo,1 ,$colNombre);
-        if ($colNombre < 0) {
-            $colNombre = 'Nom';
-            $colNombre = busca_columna($datosArchivo,1 ,$colNombre);
-        }
+        
         $colApellido1 = busca_columna($datosArchivo,1 ,$colApellido1);
-        if ($colApellido1 < 0) {
-            $colApellido1 = 'Cognom 1';
-            $colApellido1 = busca_columna($datosArchivo,1 ,$colApellido1);
-        }
+        
         $colApellido2 = busca_columna($datosArchivo,1 ,$colApellido2);
-        if ($colApellido2 < 0) {
-            $colApellido2 = 'Cognom 2';
-            $colApellido2 = busca_columna($datosArchivo,1 ,$colApellido2);
-        }
+        
         $colFecha_Nacimiento = busca_columna($datosArchivo,1 ,$colFecha_Nacimiento);
-        if ($colFecha_Nacimiento < 0) {
-            $colFecha_Nacimiento = 'Data Naixement';
-            $colFecha_Nacimiento = busca_columna($datosArchivo,1 ,$colFecha_Nacimiento);
-        }
+        
         $colTelefono1 = busca_columna($datosArchivo,1 ,$colTelefono1);
-        if ($colTelefono1 < 0) {
-            $colTelefono1 = 'Telèfon 1';
-            $colTelefono1 = busca_columna($datosArchivo,1 ,$colTelefono1);
-        }
+        
         $colTelefono2 = busca_columna($datosArchivo,1 ,$colTelefono2);
-        if ($colTelefono2 < 0) {
-            $colTelefono2 = 'Telèfon 2';
-            $colTelefono2 = busca_columna($datosArchivo,1 ,$colTelefono2);
-        }
+        
+        $colEmail = busca_columna($datosArchivo,1 ,$colEmail);
+        
         
         $indices = [];
         $indices['Tipo'] = $colTipo;
@@ -70,12 +49,13 @@ echo "</script>";
         $indices['Fecha Nacimiento'] = $colFecha_Nacimiento;
         $indices['Teléfono 1'] = $colTelefono1;
         $indices['Teléfono 2'] = $colTelefono2;
+        $indices['Email'] = $colEmail;
 
         
         //Si existen todas las columnas, procedemos con el análisis
         if (($colTipo > -1) && ($colDocumento > -1) && ($colNombre > -1)
             && ($colApellido1 > -1) && ($colApellido2 > -1) && ($colFecha_Nacimiento > -1) 
-            && ($colTelefono1 > -1) && ($colTelefono2 > -1)){
+            && ($colTelefono1 > -1) && ($colTelefono2 > -1) && ($colEmail > -1)){
 
                 //eliminamos las cabeceras de la variable de datos
                 $datosArchivo = elimina_cabeceras($datosArchivo);
@@ -168,6 +148,10 @@ echo "</script>";
                 }
                 if ($colTelefono2 == -1){
                     echo alerta('No se encuentra la columna "Telefono 2".', 'danger');
+                }
+                
+                if ($colEmail == -1){
+                    echo alerta('No se encuentra la columna "Email".', 'danger');
                 }
                 
         }

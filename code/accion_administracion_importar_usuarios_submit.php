@@ -12,6 +12,10 @@ if(isset($_GET['files'])) //Si estamos recibiendo los archivos
 
 	$uploaddir = '../uploads/';
         
+        if(!is_dir($uploaddir)){
+            mkdir($uploaddir);
+        }
+        
 	foreach($_FILES as $file)
 	{
                 $name = time();

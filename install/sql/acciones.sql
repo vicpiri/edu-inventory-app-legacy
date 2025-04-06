@@ -72,7 +72,8 @@ INSERT INTO `acciones` (`id`, `accionkey`, `nombre`, `descripcion`, `version`, `
 (34, 'ADM20', 'Consultar', 'Administración/Consultar', '0.1', 'core', 'nodo', 1, 0, 6, '', 2, ''),
 (35, 'ADM21', 'Actualizaciones disponibles', 'Administración/Consultar/Actualizaciones', '0.1', 'core', 'accion', 1, 2, 34, 'code/accion_administracion_consultar_actualizaciones.php', 1, ''),
 (44, 'ADM27', 'Usuario', 'Administración/Editar/Usuario', '0.1', 'core', 'accion', 1, 0, 14, 'code/accion_administracion_editar_usuario_form.php', 1, ''),
-(45, 'ADM28', 'Usuario', 'Administración/Nuevo/Usuario', '0.1', 'core', 'accion', 1, 0, 13, 'code/accion_administracion_nuevo_usuario.php', 1, '');
+(45, 'ADM28', 'Usuario', 'Administración/Nuevo/Usuario', '0.1', 'core', 'accion', 1, 0, 13, 'code/accion_administracion_nuevo_usuario.php', 1, ''),
+(46, 'ADM29', 'Usuarios', 'Administración/Utilidades/Usuarios', '0.1', 'core', 'accion', 1, 0, 15, 'code/accion_administracion_importar_usuarios.php', 1, '');
 
 --
 -- Índices para tablas volcadas

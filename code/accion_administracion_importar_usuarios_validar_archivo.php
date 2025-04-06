@@ -48,7 +48,7 @@ if (isset($_GET['file'])){
         require 'accion_administracion_importar_usuarios_validar_personal.php';
     }else if (busca_columna($datosArchivo,1 ,'CódigoGrupo') > -1){//Comprobamos si es de grupos buscamos 'Código'
         require 'accion_administracion_importar_usuarios_validar_grupos.php';
-    }else if (busca_columna($datosArchivo,1 ,'GrupoAlumno') > -1){ //Comprobamos si es de alumnado 'NIA'
+    }else if (busca_columna($datosArchivo,1 ,'Codigo') > -1){ //Comprobamos si es de alumnado 'NIA'
         require 'accion_administracion_importar_usuarios_validar_alumnado.php';
     }else{
         echo alerta('Parece que el archivo que intenta importar no se corresponde con ningún formato válido.', 'danger');

@@ -99,7 +99,7 @@ switch ($fase) {
             $results1 = $db1->query($sql1);
             if(!$results1) {
                 return false;
-                //die(print_r($db1->errorInfo(), TRUE));
+                die(print_r($db1->errorInfo(), TRUE));
             }
             
         }
