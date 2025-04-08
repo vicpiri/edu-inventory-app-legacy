@@ -1,4 +1,4 @@
-# README #
+# EDU Inventory Manager #
 
 Este es el repositorio del sistema de gestión de inventario y usuarios para centros educativos.
 
@@ -6,7 +6,7 @@ Este es el repositorio del sistema de gestión de inventario y usuarios para cen
 
 * Este repositorio se ha creado para el uso docente privado del autor.
 * Se trata de una versión Legacy del proyecto que ya no va a tener nuevas actualizaciones
-* Version: 0.23 (Producción)
+* Version: 0.24 (Producción)
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
 ### Configuración para ejecutar la aplicación ###
