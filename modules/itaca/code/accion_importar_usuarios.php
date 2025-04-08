@@ -1,16 +1,3 @@
-<?php
-/* En este punto ya se ha insertado el código general del sistema de:
-config.php';
-conecta_data_base.php';
-main_functions.php';
-*/
-
-//ini_set('max_input_vars', '10000');
-//phpinfo();
-
-include '../../../code/config.php';
-?>
-
 <div class="row">
     <div class="col-xs-12">
         <section class="panel panel-primary form-wizard" id="w4">
