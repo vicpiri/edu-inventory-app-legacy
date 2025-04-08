@@ -4,7 +4,7 @@
 $contenido = '<div class="form-group">';
 $contenido .= '     <label class="col-md-3 control-label">Código de Usuario</label>';
 $contenido .= '     <div class="col-md-6">';
-$contenido .= '     <input name="user" type="password" class="form-control autofocus" placeholder="" id="inputUser" autofocus>';
+$contenido .= '     <input name="user" type="text" class="form-control autofocus" placeholder="" id="inputUser" autofocus>';
 $contenido .= '     </div>';
 $contenido .= '     </div><script>$(".autofocus").trigger("focus")</script>';
 
