@@ -74,7 +74,7 @@ function modulecheck($module, $pathroot){
 }
 
 //Función que devuelve el código html de una alerta
-function alerta ($texto, $tipo, $clases, $botonCerrar){
+function alerta ($texto, $tipo, $clases = '', $botonCerrar = false){
     $salida = '<div class="alert alert-' . $tipo . ' ' . $clases . '">';
     if ($botonCerrar){
          $salida .= '        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>';
@@ -407,31 +407,43 @@ function elimina_cabeceras($tabla){
 }
 
 //Funci�n que busca el error mas alto en una tabla de errores, y lo devuelve
-function busca_errores_archivo($errores, $fila){
+function busca_errores_archivo($errores, $fila) {
     $error = 0;
-        for ($i = 0; $i < count($errores[$fila]); $i++){
-            if ($errores[$fila][$i][0] === 1){
-               $error = 1 ;
-            }else if ($errores[$fila][$i][0] === 2){
-               if ($error === 0){
-                   $error = 2;
-               }
+
+    if (!isset($errores[$fila]) || !is_array($errores[$fila])) {
+        return 0;
+    }
+
+    foreach ($errores[$fila] as $item) {
+        if (is_array($item) && isset($item[0])) {
+            if ($item[0] === 1) {
+                $error = 1;
+            } elseif ($item[0] === 2 && $error === 0) {
+                $error = 2;
             }
         }
-        return $error;
+    }
+
+    return $error;
 }
 
 //Funci�n que devuelve un tipo de clase diferente atendiendo al tipo de error encontrado.
-function deduce_clase_error($errores, $fila, $columna){
-	if ($errores[$fila][$columna][0] === 2){
-		return 'class="warning" title="' . $errores[$fila][$columna][1] .'"';
-	}else if ($errores[$fila][$columna][0] === 1){
-		return 'class="danger" title="' . $errores[$fila][$columna][1] .'"';
-	}else{
-		return 'class=""';
-	}
+function deduce_clase_error($errores, $fila, $columna) {
+    if (
+        isset($errores[$fila][$columna]) &&
+        is_array($errores[$fila][$columna]) &&
+        isset($errores[$fila][$columna][0], $errores[$fila][$columna][1])
+    ) {
+        if ($errores[$fila][$columna][0] === 2) {
+            return 'class="warning" title="' . $errores[$fila][$columna][1] . '"';
+        } elseif ($errores[$fila][$columna][0] === 1) {
+            return 'class="danger" title="' . $errores[$fila][$columna][1] . '"';
+        }
+    }
 
+    return 'class=""';
 }
+
 
 
 /* Función que comprueba los datos del archivo importado con las relaciones que hay en una tabla de la base de datos.

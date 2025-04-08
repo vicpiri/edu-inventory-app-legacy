@@ -2,3 +2,6 @@
 installed
 /code/config*.php
 /temp
+/uploads
+/updates
+/images

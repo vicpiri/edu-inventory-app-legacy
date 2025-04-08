@@ -26,8 +26,8 @@ if (isset($_GET['file'])){
     foreach ((array)glob("$directorio/*.*") as $nom_archivo) {
         //comprueba_imagen($nom_archivo);
         
-        $nombreC = end(explode('/', $nom_archivo));
-        
+        $nombreC = basename($nom_archivo);
+
         $nombre = explode('.', $nombreC)[0];
         
         $sql = "SELECT * FROM articulos WHERE id_articulo LIKE '$nombre'";
