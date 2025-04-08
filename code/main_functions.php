@@ -467,29 +467,27 @@ function cruza_columna($datosArchivo, $datosFinalesArray, $datosFinalesErroresAr
         require 'conecta_data_base.php';
 
 	$keys = array_keys($tiposArray);
-	for($a = 0; $a < count($tiposArray); $a++){
-	
-	
-		$tiposArrayIndex[$a] = 0;
-	
-		//Si el valor es entero, lo comparamos con los indices
-		if (is_numeric($tiposArray[$keys[$a]])){
-			$sql = 'SELECT * FROM ' . $tabla . ' WHERE ' . $columnaTablaId . ' = ' . $tiposArray[$keys[$a]];
-			
-                        $row = consultaDB($sql, $db);
-				
-			$tiposArrayIndex[$a] =  $row[$columnaTablaId];
-				
-		}else{ //Si el valor no es entero lo comparamos con el nombre de tipo
-			$sql = 'SELECT * FROM ' . $tabla . ' WHERE ' . $columnaTablaNombre . ' = "' . $tiposArray[$keys[$a]] . '"';
-				
-			$row = consultaDB($sql, $db);
-				
-			$tiposArrayIndex[$a] =  $row[$columnaTablaId];
-		}
-	}/**/
-	
-	//Ahora que ya tenemos los indices extraidos de los art�culos, vamos a sustituirlos en la matriz principal
+    for ($a = 0; $a < count($tiposArray); $a++) {
+        $tiposArrayIndex[$a] = 0;
+
+        if (is_numeric($tiposArray[$keys[$a]])) {
+            $sql = 'SELECT * FROM ' . $tabla . ' WHERE ' . $columnaTablaId . ' = ' . $tiposArray[$keys[$a]];
+        } else {
+            $sql = 'SELECT * FROM ' . $tabla . ' WHERE ' . $columnaTablaNombre . ' = "' . $tiposArray[$keys[$a]] . '"';
+        }
+
+        $row = consultaDB($sql, $db);
+
+        if (is_array($row) && isset($row[$columnaTablaId])) {
+            $tiposArrayIndex[$a] = $row[$columnaTablaId];
+        } else {
+            // No se encontró el valor, mantenemos el índice en 0
+            $tiposArrayIndex[$a] = 0;
+        }
+    }
+
+
+    //Ahora que ya tenemos los indices extraidos de los art�culos, vamos a sustituirlos en la matriz principal
 	
 	for($i = 1; $i <= count($datosFinalesArray); $i++){
 		for($a = 0; $a < count($tiposArrayIndex); $a++){

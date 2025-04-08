@@ -45,6 +45,9 @@ Aunque este repositorio ya incluye módulos, es necesario activarlos para que fu
 
 Para ello ve al apartado "Administración/Configuración/Gestión de módulos". Allí activa el módulo de Préstamos y recarga la página.
 
+
+El módulo ITACA sólo es necesario si se utiliza la aplicación dentro de la Comunidad Valenciana. Este módulo agiliza la importación
+de datos desde la plataforma de administración de la Conselleria de Educació.
 ### Visualización de errores ###
 Durante el proceso de desarrollo, se puede crear un archivo vacío nombrado como 'desarrollo.php' en la raiz del sitio.
 Mientras exista este archivo, todos los errores del servidor se mostrarán en la interaz de usuario.
@@ -56,3 +59,12 @@ El paquete debe ir en un archivo ZIP cuyo nombre debe ser el número de versión
 La estructura de archivos debe ser completa, es decir:
 /modules/nombredelmodulo  
 
+### Manual de usuario ###
+ A continuación se muestran una serie de videotutoriales sobre el manejo de la aplicación:
+ 
+* [Instalación de módulos y actualizaciones](https://youtu.be/MGE0ESBS6Fs)
+* [Agregar un artículo](https://youtu.be/QNltPF6zXHs)
+* [Agregar usuario](https://youtu.be/Sh_msvgBg_0)
+* [Importar artículos](https://youtu.be/-UXfaHuOxVQ)
+* [Importar usuarios](https://youtu.be/JWIGpPzHJ5k)
+* [Módulo de préstamos](https://youtu.be/kRRLB4_dyY0)

@@ -169,39 +169,36 @@ if (isset($_GET['file'])){
                 //Comprobaci�n de la existencia de los art�culos a importar en la base de datos
                 //////////////////
 
-                for($a = 1; $a <= count($datosFinalesArray); $a++){
-                        if ($datosFinalesArray[$a][$colArticulo] <> ''){
-                                $sql = 'SELECT * FROM articulos WHERE id_articulo = ' . $datosFinalesArray[$a][$colArticulo];
+                for ($a = 1; $a <= count($datosFinalesArray); $a++) {
+                    if (!empty($datosFinalesArray[$a][$colArticulo])) {
+                        $sql = 'SELECT * FROM articulos WHERE id_articulo = ' . intval($datosFinalesArray[$a][$colArticulo]);
 
-                                $row = consultaDB($sql, $db);
+                        $row = consultaDB($sql, $db);
 
-                                if ($row['id_articulo'] <> ""){
-
-                                        $datosFinalesErroresArray[$a][$colArticulo] = [2, 'WAR - Este artículo ya existe.'];
-                                        //echo $a." duplicado</br>";
-
-                                }else{
-                                        //echo "noduplicado</br>";
-                                }
-                        }else{
-                                $datosFinalesErroresArray[$a][$colArticulo] =  [2, 'WAR - No hay código de artículo.'];
+                        if (is_array($row) && !empty($row['id_articulo'])) {
+                            $datosFinalesErroresArray[$a][$colArticulo] = [2, 'WAR - Este artículo ya existe.'];
                         }
-                }
-                
-/*
-                //Resumen de errores encontrados en el an�lisis
 
-                require_once '../data/utilidades_insertar_lote_articulos_presentacion.php';
-
-                //Inclusi�n de los art�culos en la base de datos
-
-                if ($errores == 0){
-                        require_once '../data/utilidades_insertar_lote_articulos_DB.php';
-                }else{
-                        require_once '../data/utilidades_insertar_lote_articulos_erroresForm.php';
+                    } else {
+                        $datosFinalesErroresArray[$a][$colArticulo] = [2, 'WAR - No hay código de artículo.'];
+                    }
                 }
 
-*/
+
+            /*
+                            //Resumen de errores encontrados en el an�lisis
+
+                            require_once '../data/utilidades_insertar_lote_articulos_presentacion.php';
+
+                            //Inclusi�n de los art�culos en la base de datos
+
+                            if ($errores == 0){
+                                    require_once '../data/utilidades_insertar_lote_articulos_DB.php';
+                            }else{
+                                    require_once '../data/utilidades_insertar_lote_articulos_erroresForm.php';
+                            }
+
+            */
                 //////////
                 // Comprobación de que no existen dos entradas en el archivo con el mismo id_articulo
                 ///////
