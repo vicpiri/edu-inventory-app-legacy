@@ -2,6 +2,14 @@
 installed
 /code/config*.php
 /temp
-/uploads
-/updates
-/images
+/images/*
+!/images/.gitkeep
+/userimages/*
+!/userimages/no_imagen.jpg
+!/userimages/super.jpg
+/updates/*
+!/updates/.gitkeep
+/uploads/*
+!/uploads/.gitkeep
+/planosUbicacion/*
+!/planosUbicacion/no_plano.jpg
