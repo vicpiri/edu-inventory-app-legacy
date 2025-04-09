@@ -266,6 +266,16 @@
 <script src="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
 
 <?php
+/**
+ * Convierte cualquier texto PHP en una cadena JavaScript segura
+ *
+ * @param string $texto El texto original (desde base de datos u otra fuente)
+ * @return string Texto listo para usar dentro de código JS
+ */
+function js_string($texto) {
+    return json_encode($texto, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+}
+
 if (isset($_GET['articulo'])){
     require 'config.php';
     require $baseURL . 'code/conecta_data_base.php';
@@ -327,8 +337,8 @@ if (isset($_GET['articulo'])){
         $("#inputMarca").val('<?php echo $marca ?>');
         $("#inputModelo").val('<?php echo $modelo ?>');
         $("#inputSerie").val('<?php echo $numeroserie ?>');
-        $("#textareaObservaciones").val('<?php echo $observaciones ?>');
-        $("#textareaDescripcion").val('<?php echo $descripcion ?>');
+        $("#textareaObservaciones").val(<?php echo js_string($observaciones) ?>);
+        $("#textareaDescripcion").val(<?php echo js_string($descripcion) ?>);
         <?php
         if (file_exists('../images/' . $imagen)){?>
             $('#visorimagen').fadeIn("fast").attr('src','images/<?php echo $imagen; ?>');
